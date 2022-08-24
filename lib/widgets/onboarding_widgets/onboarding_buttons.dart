@@ -14,7 +14,7 @@ class OnBoardingButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: Color(0xFF54B175),
         minimumSize: Size(double.infinity,getHeight(context, 56)),
-        // shape:
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
       ),
       onPressed: function,
       child: Text(buttonText),

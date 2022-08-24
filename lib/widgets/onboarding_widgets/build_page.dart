@@ -39,8 +39,8 @@ class BuildPage extends StatelessWidget {
                     child: const Text(
                       'Skip',
                       style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 19,
+                          color: Colors.black38,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600),
                     ),
                     onPressed: function,
@@ -60,9 +60,9 @@ class BuildPage extends StatelessWidget {
                     child: Text(
                   subText1,
                   style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 5,
                       fontWeight: FontWeight.w400,
-                      color: Colors.black45),
+                      color: Colors.black38),
                 ))),
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 30),
@@ -71,9 +71,9 @@ class BuildPage extends StatelessWidget {
                     child: Text(
                   subText2,
                   style: const TextStyle(
-                      fontSize: 14,
+                      fontSize: 3,
                       fontWeight: FontWeight.w400,
-                      color: Colors.black45),
+                      color: Colors.black38),
                   textAlign: TextAlign.center,
                 )))
           ],

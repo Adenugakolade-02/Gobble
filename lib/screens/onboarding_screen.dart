@@ -48,7 +48,7 @@ class OnBoardingScreen extends StatelessWidget {
             Center(
               child: SmoothPageIndicator(
                 count: 3,
-                effect: const ExpandingDotsEffect(activeDotColor: Color(0xFF54B175), dotWidth: 10, dotHeight: 10),
+                effect: const ExpandingDotsEffect(activeDotColor: Color(0xFF54B175), dotColor: Color(0xFFE4E4E6) ,dotWidth: 10, dotHeight: 10, spacing: 10, expansionFactor: 5),
                 controller: controller),
             ),
             Container(
