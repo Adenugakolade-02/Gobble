@@ -6,12 +6,14 @@ class BuildPage extends StatelessWidget {
   final String mainText;
   final String subText1;
   final String subText2;
+  final Function() function;
 
-  const BuildPage({
+  BuildPage({
     required this.imageLoc,
     required this.mainText,
     required this.subText1,
     required this.subText2,
+    required this.function
   });
 
   @override
@@ -41,7 +43,7 @@ class BuildPage extends StatelessWidget {
                           fontSize: 19,
                           fontWeight: FontWeight.w600),
                     ),
-                    onPressed: () {},
+                    onPressed: function,
                   ))
             ]),
             SizedBox(height: getHeight(context, 30)),

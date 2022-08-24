@@ -3,8 +3,9 @@ import 'package:gobble/utils/dimensions.dart';
 
 
 class OnBoardingButton extends StatelessWidget {
+  final Function() function;
   final String buttonText;
-  const OnBoardingButton(this.buttonText);
+  const OnBoardingButton(this.buttonText, this.function);
   
   
   @override
@@ -15,7 +16,7 @@ class OnBoardingButton extends StatelessWidget {
         minimumSize: Size(double.infinity,getHeight(context, 56)),
         // shape:
       ),
-      onPressed: (){},
+      onPressed: function,
       child: Text(buttonText),
     );
   }
