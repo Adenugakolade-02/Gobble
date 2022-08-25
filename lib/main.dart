@@ -1,6 +1,7 @@
   import 'package:flutter/material.dart';
 import 'package:gobble/screens/onboarding_screen.dart';
 import 'package:gobble/screens/signup_screen.dart';
+import 'package:gobble/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     )
       ),
       
-      home: SignupForm()
+      home: OnBoardingScreen()
     );
   }
 }

@@ -83,7 +83,7 @@ flutter:
         - asset: assets/fonts/Nunito-SemiBold.ttf
     - family: Gilroy
       fonts:
-        - asset: assets/fonts/Gilroy-Bold.ttf
+        - asset: assets/fonts/Gilroy-SemiBold.ttf
         - asset: assets/fonts/Gilroy-Medium.ttf
   #
   # For details regarding fonts from package dependencies,
