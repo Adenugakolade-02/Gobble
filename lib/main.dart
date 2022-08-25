@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 import 'package:gobble/screens/onboarding_screen.dart';
+import 'package:gobble/screens/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        inputDecorationTheme: const InputDecorationTheme(
+      floatingLabelStyle: TextStyle(fontFamily: 'Gilroy',fontWeight: FontWeight.w600,fontSize:16),
+    )
       ),
-      home: OnBoardingScreen()
+      
+      home: SignupForm()
     );
   }
 }
