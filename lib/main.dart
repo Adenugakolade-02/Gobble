@@ -2,9 +2,13 @@
 import 'package:gobble/screens/onboarding_screen.dart';
 import 'package:gobble/screens/signup_screen.dart';
 import 'package:gobble/screens/login_screen.dart';
+import 'package:gobble/utils/providers/form_providers.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),    
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
     )
       ),
       
-      home: OnBoardingScreen()
+      home: LogInForm()
     );
   }
 }

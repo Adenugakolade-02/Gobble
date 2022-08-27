@@ -1,13 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gobble/widgets/forms/basic_form_field.dart';
-
+import 'package:gobble/utils/providers/form_providers.dart';
 import '../utils/dimensions.dart';
 import '../widgets/onboarding_widgets/onboarding_buttons.dart';
 import 'login_screen.dart';
 
 class SignupForm extends StatelessWidget {
   final _key = GlobalKey<FormState>();
+  ValidateForms form = ValidateForms();
 
   TextStyle textStyle = const TextStyle(
       fontFamily: 'Gilroy',
@@ -59,8 +60,7 @@ class SignupForm extends StatelessWidget {
                       textAlign: TextAlign.right,
                     ),
                     const SizedBox(height: 10),
-                    BasicFormField(
-                        hasIcon: false, suffixIcon: null, isPassWord: false),
+                    BasicFormField(validator: (_)=>form.validateName(_), saveData: (_)=>form.saveName(_),),
                     SizedBox(height: getHeight(context, 30)),
                     Text(
                       'Email',
@@ -68,8 +68,7 @@ class SignupForm extends StatelessWidget {
                       textAlign: TextAlign.right,
                     ),
                     const SizedBox(height: 10),
-                    BasicFormField(
-                        hasIcon: false, suffixIcon: null, isPassWord: false),
+                    BasicFormField(validator: (_)=>form.validateEmail(_),saveData: (_)=>form.saveMail(_),),
                     SizedBox(height: getHeight(context, 30)),
                     Text(
                       'Password',
@@ -83,7 +82,10 @@ class SignupForm extends StatelessWidget {
                           Icons.visibility_off,
                           color: Color(0xFF7C7C7C),
                         ),
-                        isPassWord: true),
+                        isPassWord: true,
+                        validator: (_)=>form.validatePassWord(_),
+                        saveData: (_)=>form.savePass(_),
+                        ),
                     SizedBox(height: getHeight(context, 20)),
                     RichText(
                         text: TextSpan(
@@ -103,7 +105,7 @@ class SignupForm extends StatelessWidget {
                                   color: Color(0xFF7EC497)))
                         ])),
                     SizedBox(height: getHeight(context, 20)),
-                    OnBoardingButton('Sign Up', () {}),
+                    OnBoardingButton('Sign Up', ()=>form.login(_key)),
                     SizedBox(height: getHeight(context, 20)),
                     Center(
                       child: RichText(

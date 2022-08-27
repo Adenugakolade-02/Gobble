@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gobble/utils/providers/form_providers.dart';
 import 'package:gobble/widgets/forms/basic_form_field.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/dimensions.dart';
 import '../widgets/onboarding_widgets/onboarding_buttons.dart';
@@ -9,6 +11,14 @@ import 'package:gobble/screens/signup_screen.dart';
 
 class LogInForm extends StatelessWidget {
   final _key = GlobalKey<FormState>();
+  ValidateForms form = ValidateForms();
+  
+  // void _login(){
+  //   if (_key.currentState?.validate()==true){
+  //     _key.currentState!.save();
+  //     print(form.name);
+  //   }
+  // }
 
   TextStyle textStyle = const TextStyle(
       fontFamily: 'Gilroy',
@@ -58,8 +68,7 @@ class LogInForm extends StatelessWidget {
                       textAlign: TextAlign.right,
                     ),
                     const SizedBox(height: 10),
-                    BasicFormField(
-                        hasIcon: false, suffixIcon: null, isPassWord: false),
+                    BasicFormField(validator: (value)=>form.validateEmail(value), saveData: (_)=>form.saveMail(_),),
                     SizedBox(height: getHeight(context, 30)),
                     Text(
                       'Password',
@@ -68,6 +77,8 @@ class LogInForm extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     BasicFormField(
+                        validator: (value)=>form.validatePassWord(value),
+                        saveData: (_)=> form.savePass(_),
                         hasIcon: true,
                         suffixIcon: const Icon(
                           Icons.visibility_off,
@@ -87,12 +98,12 @@ class LogInForm extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Gilroy'),
                         ),
-                        onPressed: () {},
+                        onPressed: (){},
                       ),
                     ),
                     SizedBox(height: getHeight(context, 20)),
                     SizedBox(height: getHeight(context, 20)),
-                    OnBoardingButton('Log In', () {}),
+                    OnBoardingButton('Log In', ()=>form.login(_key)),
                     SizedBox(height: getHeight(context, 20)),
                     Center(
                       child: RichText(
@@ -112,7 +123,8 @@ class LogInForm extends StatelessWidget {
                                     fontFamily: 'Gilroy',
                                     color: Color(0xFF7EC497)),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupForm())))
+                                  ..onTap = ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupForm()))
+                                  )
                           ])),
                     ),
                   ],
