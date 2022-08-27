@@ -9,22 +9,24 @@ import '../widgets/onboarding_widgets/onboarding_buttons.dart';
 
 import 'package:gobble/screens/signup_screen.dart';
 
-class LogInForm extends StatelessWidget {
+class LogInForm extends StatefulWidget {
+  @override
+  State<LogInForm> createState() => _LogInFormState();
+}
+
+class _LogInFormState extends State<LogInForm> {
   final _key = GlobalKey<FormState>();
+
+  bool showPassWord = false;
+
   ValidateForms form = ValidateForms();
-  
-  // void _login(){
-  //   if (_key.currentState?.validate()==true){
-  //     _key.currentState!.save();
-  //     print(form.name);
-  //   }
-  // }
 
   TextStyle textStyle = const TextStyle(
       fontFamily: 'Gilroy',
       fontWeight: FontWeight.w600,
       fontSize: 16,
       color: Color(0xFF7C7C7C));
+
   TextStyle textStyle1 = const TextStyle(
       fontFamily: 'Gilroy',
       fontWeight: FontWeight.w500,
@@ -34,7 +36,7 @@ class LogInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: Text("Yo! a fucking form")),
+      
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: getHeight(context, 25)),
         child: SafeArea(
@@ -80,11 +82,18 @@ class LogInForm extends StatelessWidget {
                         validator: (value)=>form.validatePassWord(value),
                         saveData: (_)=> form.savePass(_),
                         hasIcon: true,
-                        suffixIcon: const Icon(
-                          Icons.visibility_off,
-                          color: Color(0xFF7C7C7C),
-                        ),
-                        isPassWord: true),
+                        suffixIcon: InkWell(
+                          onTap: ()=>setState(() {
+                            showPassWord=!showPassWord;
+                          }),
+                            child: showPassWord? const Icon(
+                            Icons.visibility,
+                            color: Color(0xFF7C7C7C),
+                          ):const Icon(
+                            Icons.visibility_off,
+                            color: Color(0xFF53B175),
+                        )),
+                        isPassWord: !showPassWord),
                     SizedBox(height: getHeight(context, 20)),
                     Align(
                       alignment: Alignment.topRight,

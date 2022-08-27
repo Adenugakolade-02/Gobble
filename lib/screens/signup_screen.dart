@@ -6,15 +6,24 @@ import '../utils/dimensions.dart';
 import '../widgets/onboarding_widgets/onboarding_buttons.dart';
 import 'login_screen.dart';
 
-class SignupForm extends StatelessWidget {
+class SignupForm extends StatefulWidget {
+  @override
+  State<SignupForm> createState() => _SignupFormState();
+}
+
+class _SignupFormState extends State<SignupForm> {
   final _key = GlobalKey<FormState>();
+
   ValidateForms form = ValidateForms();
+  bool showPassWord = false;
+
 
   TextStyle textStyle = const TextStyle(
       fontFamily: 'Gilroy',
       fontWeight: FontWeight.w600,
       fontSize: 16,
       color: Color(0xFF7C7C7C));
+
   TextStyle textStyle1 = const TextStyle(
       fontFamily: 'Gilroy',
       fontWeight: FontWeight.w500,
@@ -60,7 +69,10 @@ class SignupForm extends StatelessWidget {
                       textAlign: TextAlign.right,
                     ),
                     const SizedBox(height: 10),
-                    BasicFormField(validator: (_)=>form.validateName(_), saveData: (_)=>form.saveName(_),),
+                    BasicFormField(
+                      validator: (_) => form.validateName(_),
+                      saveData: (_) => form.saveName(_),
+                    ),
                     SizedBox(height: getHeight(context, 30)),
                     Text(
                       'Email',
@@ -68,7 +80,10 @@ class SignupForm extends StatelessWidget {
                       textAlign: TextAlign.right,
                     ),
                     const SizedBox(height: 10),
-                    BasicFormField(validator: (_)=>form.validateEmail(_),saveData: (_)=>form.saveMail(_),),
+                    BasicFormField(
+                      validator: (_) => form.validateEmail(_),
+                      saveData: (_) => form.saveMail(_),
+                    ),
                     SizedBox(height: getHeight(context, 30)),
                     Text(
                       'Password',
@@ -77,15 +92,22 @@ class SignupForm extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     BasicFormField(
-                        hasIcon: true,
-                        suffixIcon: const Icon(
-                          Icons.visibility_off,
-                          color: Color(0xFF7C7C7C),
-                        ),
-                        isPassWord: true,
-                        validator: (_)=>form.validatePassWord(_),
-                        saveData: (_)=>form.savePass(_),
-                        ),
+                      hasIcon: true,
+                      suffixIcon: InkWell(
+                          onTap: ()=>setState(() {
+                            showPassWord=!showPassWord;
+                          }),
+                            child: showPassWord? const Icon(
+                            Icons.visibility,
+                            color: Color(0xFF7C7C7C),
+                          ):const Icon(
+                            Icons.visibility_off,
+                            color: Color(0xFF53B175),
+                        )),
+                      isPassWord: !showPassWord,
+                      validator: (_) => form.validatePassWord(_),
+                      saveData: (_) => form.savePass(_),
+                    ),
                     SizedBox(height: getHeight(context, 20)),
                     RichText(
                         text: TextSpan(
@@ -105,7 +127,7 @@ class SignupForm extends StatelessWidget {
                                   color: Color(0xFF7EC497)))
                         ])),
                     SizedBox(height: getHeight(context, 20)),
-                    OnBoardingButton('Sign Up', ()=>form.login(_key)),
+                    OnBoardingButton('Sign Up', () => form.login(_key)),
                     SizedBox(height: getHeight(context, 20)),
                     Center(
                       child: RichText(
@@ -124,7 +146,11 @@ class SignupForm extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'Gilroy',
                                     color: Color(0xFF7EC497)),
-                                recognizer: TapGestureRecognizer()..onTap = ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>LogInForm())))
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LogInForm())))
                           ])),
                     ),
                   ],
