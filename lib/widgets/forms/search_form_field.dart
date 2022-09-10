@@ -13,7 +13,6 @@ class SearchField extends StatelessWidget {
     prefixIcon: Icon(Icons.search, color: Color(0xFF030303),),
     border: InputBorder.none,
     contentPadding: EdgeInsets.only(bottom:10.55, top:10),
-    // focusColor: Color(0xFFF2F3F2),
     focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFF2F3F2)))
     ),
     style: const TextStyle(fontFamily: 'Gilroy',fontWeight: FontWeight.w500,fontSize:18),
