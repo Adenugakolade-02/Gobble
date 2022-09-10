@@ -10,7 +10,6 @@ class DisPlayWidget extends StatelessWidget {
       future: ParseProducts().getProducts(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          print(snapshot.data);
           return const Center(child: CircularProgressIndicator());
         } 
         else {
@@ -23,8 +22,6 @@ class DisPlayWidget extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 1
                 ),
-              
-              
               itemBuilder: (BuildContext context, int index) {
                 return BasicProduct(
                   imageUrl: productData.data[index].image,
@@ -34,16 +31,6 @@ class DisPlayWidget extends StatelessWidget {
                   rating: productData.data[index].averageReview,
                 );
               });
-          // return GridView.count(
-          //   crossAxisCount: 1,
-          //   children: [
-          //     BasicProduct(
-          //         imageUrl: productData.data[0].image,
-          //         amount: productData.data[0].price.toString(),
-          //         name: productData.data[0].name,
-          //         function: () {},
-          //       )
-          //   ],);
         }
       },
     );

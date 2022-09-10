@@ -15,13 +15,8 @@ class BasicFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        decoration: InputDecoration(
-    // isCollapsed: false,
+      decoration: InputDecoration(
     suffixIcon: hasIcon? suffixIcon: null,
-    // suffixIconColor: const Color(0xFF7C7C7C),
-    // labelText: labelText,
-    // labelStyle: TextStyle(fontFamily: 'Gilroy',fontWeight: FontWeight.w600,fontSize:16),
-    // floatingLabelBehavior: FloatingLabelBehavior.auto,
     border: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
     contentPadding: const EdgeInsets.only(bottom:10.55, top:10),
     focusColor: const Color(0xFF7C7C7C),
