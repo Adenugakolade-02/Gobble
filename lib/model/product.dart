@@ -3,10 +3,10 @@ import 'dart:convert';
 class Product{
   final String name;
   final String description;
-  final int price;
+  final double price;
   final String image;
   final String category;
-  final int averageReview;
+  final double averageReview;
 
   Product({
     required this.name, 
@@ -18,8 +18,6 @@ class Product{
     });
 
   factory Product.fromJson(Map<String, dynamic> data){
-    print('gotten to product from json');
-    // print(data);
     return Product(
       name: data['name'] ?? '', 
       description: data['description'] ?? '', 

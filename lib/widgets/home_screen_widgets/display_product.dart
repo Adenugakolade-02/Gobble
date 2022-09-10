@@ -12,15 +12,16 @@ class DisPlayWidget extends StatelessWidget {
         if (!snapshot.hasData) {
           print(snapshot.data);
           return const Center(child: CircularProgressIndicator());
-        } else {
+        } 
+        else {
           Products productData = snapshot.data as Products;
           return GridView.builder(
               itemCount: productData.data.length,
               
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 13,
-                crossAxisSpacing: 13
+                crossAxisCount: 1,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 1
                 ),
               
               
@@ -30,8 +31,19 @@ class DisPlayWidget extends StatelessWidget {
                   amount: productData.data[index].price.toString(),
                   name: productData.data[index].name,
                   function: () {},
+                  rating: productData.data[index].averageReview,
                 );
               });
+          // return GridView.count(
+          //   crossAxisCount: 1,
+          //   children: [
+          //     BasicProduct(
+          //         imageUrl: productData.data[0].image,
+          //         amount: productData.data[0].price.toString(),
+          //         name: productData.data[0].name,
+          //         function: () {},
+          //       )
+          //   ],);
         }
       },
     );

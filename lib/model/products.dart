@@ -15,8 +15,6 @@ class Products{
   factory Products.fromJson(Map <String, dynamic> data){
     List<dynamic> productList = data['data'];
     List<Product> _ = productList.map((e) => Product.fromJson(e)).toList();
-    print(_);
-    print('has gotten the products already');
     
     return Products(
       status : data['status'],

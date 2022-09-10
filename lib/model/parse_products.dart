@@ -12,12 +12,11 @@ class ParseProducts{
   Future<Products> getProducts() async {
     Uri productUri = Uri.parse(_url);
     final response = await http.get(productUri);
-    // print('gotten here in fetching');
     
     if (response.statusCode!=200){
       throw http.ClientException("Problem with URL provided");
     }
-    print(response.body);
+  
     return Products.fromJson(jsonDecode(response.body));
   }
 

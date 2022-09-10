@@ -19,8 +19,8 @@ class HomeScreen extends StatelessWidget {
                     fontSize: 20,
                     color: Color(0xFF53B175)))),
       SizedBox(height: getHeight(context,50)),
-      DisPlayWidget(),
-      
+      Expanded(child: DisPlayWidget()),
+
       ])),
     ));
   }
