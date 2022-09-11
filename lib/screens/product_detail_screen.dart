@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gobble/screens/reviews_screen.dart';
 import 'package:gobble/utils/dimensions.dart';
 import 'package:gobble/widgets/product_detail_widget/details_with_review_widget.dart';
 import 'package:gobble/widgets/product_detail_widget/variation_widget.dart';
+
+import '../widgets/product_detail_widget/upward_pageRoute.dart';
 
 class ProductDetails extends StatefulWidget {
   @override
@@ -14,9 +17,13 @@ class _ProductDetailsState extends State<ProductDetails> {
   bool isReviews = false;
   bool isFavourite = false;
 
-  void detailsFunction()=> setState(() {isDetails = !isDetails;isReviews = !isReviews;});
+  void detailsFunction()=> setState(() {isDetails = true;isReviews = false;});
 
-  void reviewsFunction()=> setState(() {isReviews = !isReviews;isDetails = !isDetails;});
+  void reviewsFunction()=> setState(() {
+    isReviews = false;
+    isDetails = true;
+    Navigator.push(context, UpwardPageRoute(widget: Reviews()));
+    });
 
   
   @override
@@ -63,7 +70,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 SizedBox(height: getHeight(context, 48.45)),
 
-                DetailsWithReview(isDetails: isDetails, isReviews: isReviews, detailsFunction: detailsFunction, reviewsFunction: reviewsFunction)
+                DetailsWithReview(isDetails: isDetails, isReviews: isReviews, detailsFunction: detailsFunction, reviewsFunction: reviewsFunction),
+                
               ]
             )
             ,)
