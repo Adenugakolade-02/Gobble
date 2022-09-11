@@ -1,6 +1,7 @@
   import 'package:flutter/material.dart';
 import 'package:gobble/screens/home_screen.dart';
 import 'package:gobble/screens/onboarding_screen.dart';
+import 'package:gobble/screens/product_detail_screen.dart';
 import 'package:gobble/screens/signup_screen.dart';
 import 'package:gobble/screens/login_screen.dart';
 import 'package:gobble/utils/providers/form_providers.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
     )
       ),
       
-      home: HomeScreen()
+      home: ProductDetails()
     );
   }
 }

@@ -11,14 +11,14 @@ class VariationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: getWidth(context, 119.67),
+      width: getWidth(context, 140.67),
       height: getHeight(context, 45.67),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(
             onPressed: decrement,
-            icon: const Icon(Icons.remove, size: 17, color: Colors.grey,)),
+            icon: const Icon(Icons.remove, color: Colors.grey,)),
           Container(
             width: getWidth(context, 45.67),
             height: getHeight(context, 45.67),
@@ -26,10 +26,10 @@ class VariationWidget extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(5)),
               border: Border.all(color: Colors.black12)
             ),
-            child: Text('1')),
+            child: const Center(child: Text('1',))),
           IconButton(
             onPressed: increment,
-            icon: const Icon(Icons.add, size: 17, color: Color(0xFF53B175),)),
+            icon: const Icon(Icons.add_outlined, color: Color(0xFF53B175),)),
         ],
       ),
     );
