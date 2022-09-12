@@ -1,39 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:gobble/widgets/product_detail_with_reviews_widget/reviews_card.dart';
 
 import '../utils/dimensions.dart';
-import '../widgets/product_detail_widget/details_with_review_widget.dart';
+import '../widgets/product_detail_with_reviews_widget/details_with_review_widget.dart';
 
-class Reviews extends StatefulWidget {
+class Reviews extends StatelessWidget {
   // bool isDetails;
   // bool isReviews;
 
   // Reviews(this.isDetails, this.isReviews);
 
   @override
-  State<Reviews> createState() => _ReviewsState();
-}
-
-class _ReviewsState extends State<Reviews> {
-  @override
-  
   Widget build(BuildContext context) {
-    // final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
-    // bool isDetails = arguments['isDetails'];
-    // bool isReviews = arguments['isReviews'];
-    // Function() detailsFunction = arguments['detailsFunction'];
-    // Function() reviewsFunction = arguments['reviewsFunction'];
-
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal:getWidth(context,25)),
-        child: Column(children: <Widget>[
-          SizedBox(height:getHeight(context, 50)),
-          DetailsWithReview(isDetails: false, isReviews: true, detailsFunction: (){Navigator.of(context).pop();
-          // setState(() {
-          //   widget.isDetails=!widget.isDetails; widget.isReviews=!widget.isReviews;
-          // }); 
-          }, reviewsFunction: (){})
-        ]
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: getWidth(context, 15)),
+          child: Column(
+            children: [
+              SizedBox(height: getHeight(context, 10)),
+              DetailsWithReview(
+                  isDetails: false,
+                  isReviews: true,
+                  detailsFunction: () {
+                    Navigator.of(context).pop();
+                  },
+                  reviewsFunction: () {}),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(children: <Widget>[
+                    SizedBox(height: getHeight(context, 10)),
+                    Column(children: [
+                      ReviewsCard(
+                          text:
+                              "Apples are nutritious. Apples may be good for weight loss."),
+                      ReviewsCard(text: "apples may be good for your heart."),
+                      ReviewsCard(text: "apples may be good for your heart."),
+                       ReviewsCard(text: "apples may be good for your heart."),
+                    ])
+                  ]),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

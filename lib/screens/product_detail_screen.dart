@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gobble/screens/reviews_screen.dart';
 import 'package:gobble/utils/dimensions.dart';
-import 'package:gobble/widgets/product_detail_widget/details_with_review_widget.dart';
-import 'package:gobble/widgets/product_detail_widget/variation_widget.dart';
+import 'package:gobble/widgets/onboarding_widgets/onboarding_buttons.dart';
+import 'package:gobble/widgets/product_detail_with_reviews_widget/details_with_review_widget.dart';
+import 'package:gobble/widgets/product_detail_with_reviews_widget/variation_widget.dart';
 
-import '../widgets/product_detail_widget/upward_pageRoute.dart';
+import '../widgets/product_detail_with_reviews_widget/upward_pageRoute.dart';
 
 class ProductDetails extends StatefulWidget {
   @override
@@ -45,11 +46,12 @@ class _ProductDetailsState extends State<ProductDetails> {
             padding: EdgeInsets.symmetric(horizontal:getWidth(context,25)),
             child: Column(
               children: <Widget>[
-                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                  
                   const Text('Data', style: TextStyle(fontFamily: 'Gilroy',fontWeight: FontWeight.w600,fontSize:18)),
+                  
                   IconButton(
                     onPressed: (){
                       setState(() {
@@ -64,17 +66,29 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    
                     VariationWidget(increment: (){}, decrement: (){}),
+                    
                     const Text('N 200',style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, fontFamily:'Gilroy'))
                   ],
                 ),
+
                 SizedBox(height: getHeight(context, 48.45)),
 
                 DetailsWithReview(isDetails: isDetails, isReviews: isReviews, detailsFunction: detailsFunction, reviewsFunction: reviewsFunction),
                 
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: getHeight(context, 10)),
+                  height: getHeight(context, 150),
+                  child: Text("Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, fontFamily:'Gilroy', color: Color(0xFF7C7C7C)),)),
+                
+                OnBoardingButton("Buy Now", (){}),
+                
+                SizedBox(height:getHeight(context, 15))
               ]
             )
             ,)
-        ]));
+        ]),
+        );
   }
 }
