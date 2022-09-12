@@ -2,6 +2,7 @@
 
 
 import 'package:gobble/model/product.dart';
+import 'package:gobble/model/reviews.dart';
 
 class Products{
   final String status;

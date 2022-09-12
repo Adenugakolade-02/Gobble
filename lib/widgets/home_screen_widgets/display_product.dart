@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gobble/model/parse_products.dart';
+import 'package:gobble/model/parser.dart';
 import 'package:gobble/model/products.dart';
 import 'package:gobble/widgets/home_screen_widgets/basic_product.dart';
+
+import '../../screens/product_detail_screen.dart';
 
 class DisPlayWidget extends StatelessWidget {
   @override
@@ -24,12 +26,14 @@ class DisPlayWidget extends StatelessWidget {
                 ),
               itemBuilder: (BuildContext context, int index) {
                 return BasicProduct(
-                  imageUrl: productData.data[index].image,
-                  amount: productData.data[index].price.toString(),
-                  name: productData.data[index].name,
-                  function: () {},
-                  rating: productData.data[index].averageReview,
-                );
+                imageUrl: productData.data[index].image,
+                amount: productData.data[index].price.toString(),
+                name: productData.data[index].name,
+                function: () {},
+                rating: productData.data[index].averageReview,
+                id: productData.data[index].id,
+                description: productData.data[index].description,
+                  );
               });
         }
       },

@@ -4,8 +4,9 @@ import '../../utils/dimensions.dart';
 
 class ReviewsCard extends StatelessWidget{
   final String text;
+  final String user;
 
-  const ReviewsCard({Key? key, required this.text}) : super(key: key);
+  const ReviewsCard({Key? key, required this.text, required this.user}) : super(key: key);
   
   @override
   Widget build(BuildContext context){
@@ -21,7 +22,7 @@ class ReviewsCard extends StatelessWidget{
               Row(children: [
                 Icon(Icons.person_rounded),
                 SizedBox(width: getWidth(context, 30)),
-                const Text('User', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily:'Gilroy'))
+                Text(user, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily:'Gilroy'))
               ],),
               SizedBox(height: getHeight(context, 20)),
               Text(text, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500, fontFamily:'Gilroy', color: Color(0xFF7C7C7C)))
