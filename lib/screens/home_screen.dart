@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gobble/screens/favourite_screen.dart';
 import 'package:gobble/widgets/bottom_navigation_bar.dart';
 import 'package:gobble/widgets/forms/search_form_field.dart';
 import 'package:gobble/widgets/home_screen_widgets/display_product.dart';
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> navList = [
     Expanded(child: DisPlayWidget()),
-    Expanded(child: DisPlayWidget()),
+    Expanded(child: FavouriteScreen()),
     Expanded(child: DisPlayWidget()),
     Expanded(child: Container(color: Colors.black,)),
   ];
@@ -34,21 +35,26 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavBar(selectedIndex: _selectedIndex, onItemTapped: (index)=>_onItemTapped(index),),
         body: Padding(
       padding: EdgeInsets.symmetric(horizontal: getHeight(context, 25)),
-      child: SafeArea(
-          child: Column(children: <Widget>[
-            SizedBox(height: getHeight(context,10)),
-        const Center(
-            child: Text('Gobble',
-                style: TextStyle(
-                    fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                    color: Color(0xFF53B175)))),
-      SizedBox(height: getHeight(context,10)),
-      SearchField(function: (_){}),
-      SizedBox(height: getHeight(context,30)),
-      navList.elementAt(_selectedIndex)
-      ])),
+      child: Column(
+        children: [
+          navList.elementAt(_selectedIndex),
+        ],
+      )
+      // SafeArea(
+      //     child: Column(children: <Widget>[
+      //       SizedBox(height: getHeight(context,10)),
+      //   const Center(
+      //       child: Text('Gobble',
+      //           style: TextStyle(
+      //               fontFamily: 'Gilroy',
+      //               fontWeight: FontWeight.w600,
+      //               fontSize: 20,
+      //               color: Color(0xFF53B175)))),
+      // SizedBox(height: getHeight(context,10)),
+      // // SearchField(function: (_){}),
+      // SizedBox(height: getHeight(context,30)),
+      // navList.elementAt(_selectedIndex)
+      // ])),
     ));
   }
 }

@@ -10,9 +10,11 @@ class ProductsProvider extends ChangeNotifier{
   late List<Product> _favouriteList;
 
   bool loaded = false;
+  bool isEmpty = false;
  
   ProductsProvider(){
     _favouriteList =_productsList.where((element) => element.isFavourite==true).toList();
+    isEmpty = _favouriteList.isEmpty;
     populateList();
   }
 
@@ -30,12 +32,18 @@ class ProductsProvider extends ChangeNotifier{
     for(final e in _productsList){
       if (e.id == id){
         e.isFavourite = !e.isFavourite;
-        notifyListeners();
         _favouriteList =_productsList.where((element) => element.isFavourite==true).toList();
+        print(_favouriteList);
+        isEmpty = _favouriteList.isEmpty;
+        notifyListeners();
         break;
       }
     }
   }
+
+  // bool isEmptyFavourite(){
+  //   return _favouriteList.isEmpty;
+  // }
 
   Product obtainProduct(String id){
     return _productsList.firstWhere((element) => element.id == id);
