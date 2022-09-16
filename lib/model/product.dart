@@ -8,6 +8,7 @@ class Product{
   final String image;
   final String category;
   final double averageReview;
+  bool isFavourite;
 
   Product({
     required this.id,
@@ -17,7 +18,7 @@ class Product{
     required this.image, 
     required this.category, 
     required this.averageReview
-    });
+    }):isFavourite=false;
 
   factory Product.fromJson(Map<String, dynamic> data){
     return Product(

@@ -1,4 +1,6 @@
   import 'package:flutter/material.dart';
+import 'package:gobble/model/cart.dart';
+import 'package:gobble/model/products_provider.dart';
 import 'package:gobble/screens/home_screen.dart';
 import 'package:gobble/screens/onboarding_screen.dart';
 import 'package:gobble/screens/product_detail_screen.dart';
@@ -8,6 +10,7 @@ import 'package:gobble/utils/providers/form_providers.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  
   runApp(
     const MyApp(),    
   );
@@ -19,7 +22,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ProductsProvider>(create: (_)=> ProductsProvider()),
+        ChangeNotifierProvider<Cart>(create: (_)=> Cart()),
+      ],
+      child: MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -29,6 +37,8 @@ class MyApp extends StatelessWidget {
       ),
       
       home: HomeScreen()
-    );
+    )
+      ,);
+    
   }
 }

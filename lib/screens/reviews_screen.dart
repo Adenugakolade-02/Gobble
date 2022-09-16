@@ -10,10 +10,6 @@ class ReviewScreen extends StatelessWidget {
   final String id;
 
   const ReviewScreen({Key? key, required this.id}) : super(key: key);
-  // bool isDetails;
-  // bool isReviews;
-
-  // Reviews(this.isDetails, this.isReviews);
 
   @override
   Widget build(BuildContext context) {
