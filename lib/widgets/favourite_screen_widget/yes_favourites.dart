@@ -14,25 +14,27 @@ class YesFavourites extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle _style1 = const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Color(0xFF181725));
     
-    return 
-      Column(
-        children: [
-          Consumer<ProductsProvider>(builder: (context, value, child){
-            return ListView.builder(
-                itemCount: value.getFavourite().length,
-                itemBuilder: (_, index){
-                  UnmodifiableListView<Product> fav = value.getFavourite();
-                  return FavouriteWidget(price: '${fav[index].price}', name: fav[index].name, imageUrl: fav[index].image, id: fav[index].id);
-                });
-          }),
-            
-          
-          
-    
-        OnBoardingButton('Add All To Cart', (){}),
-        SizedBox(height:getHeight(context,10))
+      return Container(
+        height: getHeight(context, 655),
+        child: Column(
+          children: [
+            Expanded(
+              child: Consumer<ProductsProvider>(builder: (context, value, child){
+                return ListView.builder(
+                  itemCount: value.getFavourite().length,
+                  itemBuilder: (_, index){
+                    UnmodifiableListView<Product> fav = value.getFavourite();
+                    return FavouriteWidget(price: '${fav[index].price}', name: fav[index].name, imageUrl: fav[index].image, id: fav[index].id);
+                  });
+              }),
+            ),
+            // SizedBox(height:getHeight(context,20)),
+            OnBoardingButton('Add All To Cart', (){}),
 
-        ],
+            // SizedBox(height:getHeight(context,10))
+
+          ],
+        ),
       );
   }
 }

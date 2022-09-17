@@ -14,14 +14,14 @@ class FavouriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     
     bool isEmpty = context.select<ProductsProvider, bool>((provider) => provider.isEmpty);
-    const TextStyle _style1 = TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Color(0xFF181725));
+    const TextStyle _style1 = TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Color(0xFF53B175));
     
     return SafeArea(
           child: Column(
         children: [
           SizedBox(height: getHeight(context,10)),
-          Text('Favourites', style: _style1,),
-          SizedBox(height: getHeight(context,32.17)),
+          const Text('Favourites', style: _style1,),
+          SizedBox(height: getHeight(context,15)),
           isEmpty? NoFavourites(): YesFavourites(),
         ],
       ),

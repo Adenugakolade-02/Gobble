@@ -13,7 +13,7 @@ class FavouriteWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Divider(),
+        // const Divider(),
         Container(
           height: getHeight(context, 115),
           margin: const EdgeInsets.only(bottom:10,top: 10),
