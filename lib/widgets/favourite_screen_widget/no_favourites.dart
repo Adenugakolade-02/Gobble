@@ -45,7 +45,9 @@ class NoFavourites extends StatelessWidget {
               
           SizedBox(height: getHeight(context, 30)),
             
-          OnBoardingButton('Start Shopping', (){}),
+          OnBoardingButton('Start Shopping', (){
+            
+          }),
 
         ],
       

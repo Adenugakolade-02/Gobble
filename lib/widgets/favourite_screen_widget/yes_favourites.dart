@@ -16,6 +16,7 @@ class YesFavourites extends StatelessWidget {
     
       return Container(
         height: getHeight(context, 655),
+        color: const Color(0xFFFBFBFB),
         child: Column(
           children: [
             Expanded(
@@ -29,7 +30,9 @@ class YesFavourites extends StatelessWidget {
               }),
             ),
             // SizedBox(height:getHeight(context,20)),
-            OnBoardingButton('Add All To Cart', (){}),
+            OnBoardingButton('Add All To Cart', (){
+              
+            }),
 
             // SizedBox(height:getHeight(context,10))
 

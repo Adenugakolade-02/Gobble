@@ -1,51 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:gobble/screens/product_detail_screen.dart';
+import 'package:gobble/model/cart.dart';
+import 'package:gobble/model/product.dart';
+import 'package:gobble/model/products_provider.dart';
 import 'package:gobble/utils/dimensions.dart';
+import 'package:gobble/widgets/onboarding_widgets/onboarding_buttons.dart';
+import 'package:provider/provider.dart';
 
 class FavouriteWidget extends StatelessWidget {
   final String price,name,imageUrl,id;
 
   const FavouriteWidget({Key? key, required this.price, required this.name, required this.imageUrl, required this.id}) : super(key: key);
-  
   final TextStyle _style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF181725));
-
+  
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // const Divider(),
-        Container(
-          height: getHeight(context, 115),
-          margin: const EdgeInsets.only(bottom:10,top: 10),
-          width: double.infinity,
-          // decoration: BoxDecoration(
-          //   border: Border.all(color:Colors.grey)
-          // ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 115,
-                width: 115,
-                child: Image.network(imageUrl, fit:BoxFit.fill),
+    Product product = context.read<ProductsProvider>().obtainProduct(id);
+    return Container(
+      height: getHeight(context, 220),
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: getHeight(context, 140),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15)
+            ),
+            child: Row(
+              children: <Widget>[
+                ClipRRect(
+                  child: Container(
+                    height: 115,
+                    width: 115,
+                    child: Image.network(imageUrl, fit:BoxFit.fill),
+                    decoration: BoxDecoration(
+                      color:Colors.white,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-
-                SizedBox(width: getWidth(context,22.04)),
-
+                SizedBox(width:getWidth(context, 10)),
+                
                 SizedBox(width: getWidth(context, 60),child: Wrap(children:[Text(name, style: _style,)])),
-
-                SizedBox(width: getWidth(context,10)),
+                
+                SizedBox(width:getWidth(context, 70)),
 
                 Text('N '+price, style: _style,),
-
-                SizedBox(width: getWidth(context,8)),
-
-                IconButton(onPressed: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProductDetails(id: id,))),
-                 icon: const Icon(Icons.arrow_forward_ios, color: Color(0xFF181725),))
-            ]
+              ]
+            )
           ),
-        ),
-        const Divider()
-      ],
+          SizedBox(height: getHeight(context, 20)),
+          Container(
+            color: const Color(0xFFFBFBFB),
+            height: getHeight(context, 60),
+            width: double.infinity,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(child: RemoveButton('Remove', ()=>context.read<ProductsProvider>().toggleFavouite(id))),
+                SizedBox(width:getWidth(context, 10)),
+                Expanded(child: OnBoardingButton('Add to Cart', ()=>context.read<Cart>().add(product)))
+              ]
+            ),
+          )
+        ]
+      ),
+    );
+  }
+}
+
+class RemoveButton extends StatelessWidget {
+  final Function() function;
+  final String buttonText;
+  const RemoveButton(this.buttonText, this.function);
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: const Color(0xFFFBFBFB),
+        minimumSize: Size(double.infinity,getHeight(context, 56)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        side: const BorderSide(color: Color(0xFF54B175))
+      ),
+      onPressed: function,
+      child: Text(buttonText, style: const TextStyle(color: Color(0xFF54B175), fontWeight: FontWeight.w500),),
     );
   }
 }

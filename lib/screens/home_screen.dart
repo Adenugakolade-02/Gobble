@@ -40,21 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
           navList.elementAt(_selectedIndex),
         ],
       )
-      // SafeArea(
-      //     child: Column(children: <Widget>[
-      //       SizedBox(height: getHeight(context,10)),
-      //   const Center(
-      //       child: Text('Gobble',
-      //           style: TextStyle(
-      //               fontFamily: 'Gilroy',
-      //               fontWeight: FontWeight.w600,
-      //               fontSize: 20,
-      //               color: Color(0xFF53B175)))),
-      // SizedBox(height: getHeight(context,10)),
-      // // SearchField(function: (_){}),
-      // SizedBox(height: getHeight(context,30)),
-      // navList.elementAt(_selectedIndex)
-      // ])),
     ));
   }
 }
