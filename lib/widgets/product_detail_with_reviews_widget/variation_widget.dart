@@ -9,7 +9,7 @@ import '../../utils/dimensions.dart';
 class VariationWidget extends StatelessWidget {
   final String id;
 
-  VariationWidget({Key? key, required this.id}) : super(key: key);
+  const VariationWidget({Key? key, required this.id}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {

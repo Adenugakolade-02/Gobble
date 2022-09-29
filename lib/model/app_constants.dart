@@ -1,4 +1,9 @@
 class AppConstant{
-  static String productsApi = 'https://gobble-foods.herokuapp.com/api/v1/products';
-  static String reviewsApi = 'https://gobble-foods.herokuapp.com/api/v1/reviews/';
+
+  static String baseUrl = "https://gobble-foods.herokuapp.com";
+  
+  static String productsApi = baseUrl + '/api/v1/products';
+  static String reviewsApi = baseUrl + '/api/v1/reviews/';
+  static String signUp = baseUrl + '/api/v1/auth/signup';
+  static String logIn = baseUrl + '/api/v1/auth/login';
 }

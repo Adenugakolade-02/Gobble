@@ -58,7 +58,9 @@ class FavouriteWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(child: RemoveButton('Remove', ()=>context.read<ProductsProvider>().toggleFavouite(id))),
+                
                 SizedBox(width:getWidth(context, 10)),
+                
                 Expanded(child: OnBoardingButton('Add to Cart', ()=>context.read<Cart>().add(product)))
               ]
             ),

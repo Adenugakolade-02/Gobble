@@ -2,9 +2,9 @@ import 'package:gobble/model/app_constants.dart';
 import 'package:gobble/model/products.dart';
 import 'package:gobble/model/reviews.dart';
 
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
 class ParseProducts{
   final String _productsUrl = AppConstant.productsApi;
   final String _reviewsUrl = AppConstant.reviewsApi;

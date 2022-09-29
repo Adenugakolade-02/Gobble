@@ -29,13 +29,8 @@ class YesFavourites extends StatelessWidget {
                   });
               }),
             ),
-            // SizedBox(height:getHeight(context,20)),
-            OnBoardingButton('Add All To Cart', (){
-              
-            }),
-
-            // SizedBox(height:getHeight(context,10))
-
+            OnBoardingButton('Add All To Cart', (){}
+            ),
           ],
         ),
       );
