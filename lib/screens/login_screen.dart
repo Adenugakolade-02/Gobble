@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gobble/model/auth_provider.dart';
+import 'package:gobble/model/user_preference.dart';
 import 'package:gobble/utils/providers/form_providers.dart';
 import 'package:gobble/widgets/forms/basic_form_field.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,8 @@ class _LogInFormState extends State<LogInForm> {
   final _key = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
+  String? message;
 
   bool showPassWord = false;
   
@@ -65,6 +68,18 @@ class _LogInFormState extends State<LogInForm> {
     }
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    // message = await UserPreference().getToken1();
+    jfj();
+    super.initState();
+  }
+
+  void jfj() async{
+    message = await UserPreference().getToken1();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +106,7 @@ class _LogInFormState extends State<LogInForm> {
                                 fontWeight: FontWeight.w600,
                                 fontSize: 35,
                                 color: Color(0xFF53B175)))),
-                    
+                    Text("here is the token ${message}"),
                     SizedBox(height: getHeight(context, 100)),
                     
                     const Text("Login",

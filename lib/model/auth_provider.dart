@@ -2,6 +2,7 @@
 // import 'dart:convert';
 // import 'dart:io';
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:gobble/model/app_constants.dart';
@@ -29,6 +30,8 @@ class AuthProvider extends  ChangeNotifier{
   Status get loggedInStatus => _loggedInStatus;
   Status get registeredStatus => __registeredStatus;
 
+  final UserPreference userPreference = UserPreference();
+
   Future<Map<String, dynamic>> login(String email, String passWord) async{
     var result;
 
@@ -55,7 +58,7 @@ class AuthProvider extends  ChangeNotifier{
 
       User authUser = User.fromJson(userData);
 
-      UserPreference().saveUser(authUser);
+      await userPreference.saveUser(authUser);
       _loggedInStatus = Status.loggedIn;
       notifyListeners();
 
@@ -127,6 +130,16 @@ class AuthProvider extends  ChangeNotifier{
 
       return result;
     }
+  }
+
+  Future<void> startTime(BuildContext context) async{
+    DateTime expiredDateTime = await UserPreference().getExpiredDateTime();
+    Timer(Duration(seconds: expiredDateTime.difference(DateTime.now()).inSeconds), () async{
+      await userPreference.removeUser();
+      _loggedInStatus = Status.loggedOut;
+      notifyListeners();
+      Navigator.of(context).pushReplacementNamed('/myapp');
+      });
   }
 }
 
