@@ -30,7 +30,7 @@ class DisPlayWidget extends StatelessWidget {
                   fontSize: 20,
                   color: Color(0xFF53B175)))),
           SizedBox(height: getHeight(context,10)),
-          SearchField(function: (_){}),
+          SearchField(),
           SizedBox(height: getHeight(context,30)),
           !load
           ? const Center(child: CircularProgressIndicator())

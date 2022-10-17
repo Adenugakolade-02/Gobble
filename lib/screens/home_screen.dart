@@ -50,9 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    // AuthProvider().startTime(context);
-    context.read<AuthProvider>().startTime(context);
+    // context.read<AuthProvider>().startTime(context);
     super.didChangeDependencies();
   }
 

@@ -77,7 +77,7 @@ class _LogInFormState extends State<LogInForm> {
   }
 
   void jfj() async{
-    message = await UserPreference().getToken1();
+    message = await UserPreference().getToken();
   }
 
 

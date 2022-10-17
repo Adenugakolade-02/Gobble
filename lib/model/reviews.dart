@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Reviews{
   final String review;
   final String user;
@@ -13,6 +15,11 @@ class Reviews{
       user: data['User']['name'] ?? ''
       );
   }
+
+  Map<String, dynamic> toJson(String review){
+    return {"review": review};
+  }
+
   @override
   String toString() {
     // TODO: implement toString

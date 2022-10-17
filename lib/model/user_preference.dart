@@ -10,7 +10,7 @@ class UserPreference{
   Future<void> saveUser(User user) async{
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     
-    DateTime expiredDate = DateTime.now().add(Duration(minutes: 1));
+    DateTime expiredDate = DateTime.now().add(Duration(minutes: 5));
     prefs.setInt("userId", user.id);
     prefs.setString("name", user.name);
     prefs.setString("email", user.email);
@@ -48,12 +48,12 @@ class UserPreference{
     return token!;
   }
 
-  Future<String?> getToken1() async{
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  // Future<String?> getToken1() async{
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? token = prefs.getString("token");
-    return token;
-  }
+  //   String? token = prefs.getString("token");
+  //   return token;
+  // }
 
   Future<bool?> isLoggedIn() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();

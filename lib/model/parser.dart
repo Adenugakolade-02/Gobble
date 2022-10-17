@@ -1,9 +1,11 @@
 import 'package:gobble/model/app_constants.dart';
 import 'package:gobble/model/products.dart';
 import 'package:gobble/model/reviews.dart';
+import 'package:gobble/model/user_preference.dart';
 
-
+import 'dart:async';
 import 'dart:convert';
+import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 class ParseProducts{
   final String _productsUrl = AppConstant.productsApi;
@@ -34,5 +36,24 @@ class ParseProducts{
       return _.map((elements) => Reviews.fromJson(elements)).toList();
       
     }
+  }
+
+  Future<void> postReview(String review, String id) async{
+    Uri postUri = Uri.parse(AppConstant.reviewsApi+id);
+    String token = await UserPreference().getToken();
+    
+    Response response = await http.post(
+      postUri,
+      body: json.encode({'review': review}),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token'
+      }
+    );
+
+    if(response.statusCode !=200){
+      throw http.ClientException("Problem with URL provided");
+    }
+    
   }
 }
